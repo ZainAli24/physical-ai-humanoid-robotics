@@ -202,10 +202,10 @@ description: "Task list for Book Foundation & Structure implementation"
 - [X] T093 Final branding test: Verify favicon, logo, title, footer on all pages (VERIFIED: all branding updated in docusaurus.config.ts)
 
 **Git Workflow**
-- [ ] T094 Review all changes: Run `git status` and `git diff`
-- [ ] T095 Stage all changes: Run `git add .`
-- [ ] T096 Create commit: Run `git commit -m "feat: implement book foundation with structure, branding, and initial content"`
-- [ ] T097 Verify commit: Run `git log -1` to confirm commit message
+- [X] T094 Review all changes: Run `git status` and `git diff`
+- [X] T095 Stage all changes: Run `git add .`
+- [X] T096 Create commit: Run `git commit -m "feat: implement book foundation with structure, branding, and initial content"`
+- [X] T097 Verify commit: Run `git log -1` to confirm commit message
 
 ---
 
