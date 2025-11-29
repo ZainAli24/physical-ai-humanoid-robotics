@@ -5,9 +5,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'Physical AI & Humanoid Robotics',
+  tagline: 'From ROS 2 to Vision-Language-Action Models',
+  favicon: 'img/book_robotics_favicon_and_book_logo_image00.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -46,21 +46,7 @@ const config: Config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false, // Blog disabled for textbook
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -75,19 +61,18 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: 'Physical AI & Humanoid Robotics',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'Robotics Logo',
+        src: 'img/book_robotics_favicon_and_book_logo_image00.png',
       },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'mainSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Book',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
@@ -99,46 +84,41 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Book',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Preface',
+              to: '/docs/preface',
+            },
+            {
+              label: 'Introduction to Physical AI',
+              to: '/docs/intro-physical-ai',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Modules',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Module 1: ROS 2',
+              to: '/docs/module-1-ros2/ros2-fundamentals',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'Module 2: Gazebo & Unity',
+              to: '/docs/module-2-gazebo/gazebo-simulation',
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
+              label: 'Module 3: NVIDIA Isaac',
+              to: '/docs/module-3-isaac/isaac-sdk-overview',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Module 4: VLA',
+              to: '/docs/module-4-vla/voice-to-action',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Built with Docusaurus for Physical AI & Humanoid Robotics`,
     },
     prism: {
       theme: prismThemes.github,
