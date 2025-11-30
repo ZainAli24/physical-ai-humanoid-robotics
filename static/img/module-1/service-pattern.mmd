@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant Client as Service Client
+    participant Service as /add_two_ints
+    participant Server as Service Server
+
+    Note over Server: Server ready and waiting
+    Server->>Service: advertise service
+
+    Client->>Service: send request(a=5, b=3)
+    Service->>Server: forward request
+
+    Note over Server: Process: sum = a + b
+    Server->>Service: send response(sum=8)
+    Service->>Client: forward response
+
+    Note over Client: Received result: 8

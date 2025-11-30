@@ -1,0 +1,51 @@
+# ROS 2 Architecture Diagram
+# This file documents the ROS 2 architecture diagram structure
+# Convert to Mermaid diagram or PNG image
+
+```
+┌─────────────────────────────────────────┐
+│                                         │
+│         Application Layer               │
+│    (Your Robot Application Code)       │
+│                                         │
+└───────────────┬─────────────────────────┘
+                │
+┌───────────────▼─────────────────────────┐
+│                                         │
+│         rclpy / rclcpp                  │
+│    (Python/C++ Client Libraries)       │
+│                                         │
+└───────────────┬─────────────────────────┘
+                │
+┌───────────────▼─────────────────────────┐
+│                                         │
+│      ROS 2 Client Library (rcl)        │
+│   (Language-Independent Core API)      │
+│                                         │
+└───────────────┬─────────────────────────┘
+                │
+┌───────────────▼─────────────────────────┐
+│                                         │
+│    DDS Implementation                   │
+│  (Fast-RTPS, Cyclone DDS, etc.)        │
+│                                         │
+└───────────────┬─────────────────────────┘
+                │
+┌───────────────▼─────────────────────────┐
+│                                         │
+│         Network Layer                   │
+│    (UDP/TCP Communication)              │
+│                                         │
+└─────────────────────────────────────────┘
+```
+
+Alt Text: "ROS 2 architecture diagram showing application layer, client libraries (rclpy/rclcpp), ROS 2 Client Library, DDS implementation, and network layer in a vertical stack"
+
+Mermaid Code:
+```mermaid
+graph TD
+    A[Application Layer<br/>Your Robot Code] --> B[rclpy/rclcpp<br/>Python/C++ Client Libraries]
+    B --> C[ROS 2 Client Library rcl<br/>Language-Independent Core]
+    C --> D[DDS Implementation<br/>Fast-RTPS, Cyclone DDS]
+    D --> E[Network Layer<br/>UDP/TCP Communication]
+```

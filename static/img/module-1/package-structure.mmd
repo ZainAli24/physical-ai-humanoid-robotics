@@ -1,0 +1,21 @@
+graph TD
+    Root[my_robot_package/] --> PkgXML[package.xml<br/>Dependencies & Metadata]
+    Root --> Setup[setup.py<br/>Build Configuration]
+    Root --> SetupCfg[setup.cfg<br/>Install Configuration]
+    Root --> Resource[resource/<br/>Package Marker]
+    Root --> Src[my_robot_package/<br/>Source Code]
+    Root --> Test[test/<br/>Unit Tests]
+
+    Src --> Init[__init__.py]
+    Src --> Node1[publisher_node.py]
+    Src --> Node2[subscriber_node.py]
+
+    Test --> TestInit[__init__.py]
+    Test --> TestPub[test_publisher.py]
+    Test --> TestSub[test_subscriber.py]
+
+    style Root fill:#e1f5ff,stroke:#01579b,stroke-width:3px
+    style PkgXML fill:#fff4e1,stroke:#ff6f00,stroke-width:2px
+    style Setup fill:#fff4e1,stroke:#ff6f00,stroke-width:2px
+    style Src fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    style Test fill:#fce4ec,stroke:#880e4f,stroke-width:2px

@@ -1,0 +1,41 @@
+# ROS 2 Computation Graph Example
+# This file documents a sample ROS 2 computation graph with 3 nodes
+# Convert to Mermaid diagram or PNG image
+
+```
+    ┌──────────────┐
+    │  Camera Node │
+    │              │
+    └──────┬───────┘
+           │
+           │ publishes
+           │ /camera/image
+           │
+           ▼
+    ┌──────────────┐
+    │Image Process │
+    │    Node      │
+    └──────┬───────┘
+           │
+           │ publishes
+           │ /processed/image
+           │
+           ▼
+    ┌──────────────┐
+    │Display Node  │
+    │              │
+    └──────────────┘
+```
+
+Alt Text: "ROS 2 computation graph example with camera node publishing to image processing node and display node subscribed to processed images"
+
+Mermaid Code:
+```mermaid
+graph LR
+    Camera[Camera Node] -->|/camera/image| ImageProc[Image Processing Node]
+    ImageProc -->|/processed/image| Display[Display Node]
+
+    style Camera fill:#e1f5ff
+    style ImageProc fill:#fff4e1
+    style Display fill:#e8f5e9
+```

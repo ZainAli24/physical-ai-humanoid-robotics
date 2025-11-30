@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant Pub as Publisher Node
+    participant Topic as /sensor_data
+    participant Sub1 as Subscriber 1
+    participant Sub2 as Subscriber 2
+
+    Sub1->>Topic: subscribe()
+    Sub2->>Topic: subscribe()
+
+    loop Every 100ms
+        Pub->>Topic: publish(data)
+        Topic->>Sub1: callback(data)
+        Topic->>Sub2: callback(data)
+    end
