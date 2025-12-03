@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-module-4-vla/vla-architectures" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">VLA Architectures: RT-1, RT-2, PaLM-E | Physical AI &amp; Humanoid Robotics</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://zainali24.github.io/physical-ai-humanoid-robotics/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://zainali24.github.io/physical-ai-humanoid-robotics/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://zainali24.github.io/physical-ai-humanoid-robotics/docs/module-4-vla/vla-architectures"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="VLA Architectures: RT-1, RT-2, PaLM-E | Physical AI &amp; Humanoid Robotics"><meta data-rh="true" name="description" content="Deep dive into state-of-the-art Vision-Language-Action architectures including RT-1, RT-2, and PaLM-E"><meta data-rh="true" property="og:description" content="Deep dive into state-of-the-art Vision-Language-Action architectures including RT-1, RT-2, and PaLM-E"><link data-rh="true" rel="icon" href="/physical-ai-humanoid-robotics/img/book_robotics_favicon_and_book_logo_image00.png"><link data-rh="true" rel="canonical" href="https://zainali24.github.io/physical-ai-humanoid-robotics/docs/module-4-vla/vla-architectures"><link data-rh="true" rel="alternate" href="https://zainali24.github.io/physical-ai-humanoid-robotics/docs/module-4-vla/vla-architectures" hreflang="en"><link data-rh="true" rel="alternate" href="https://zainali24.github.io/physical-ai-humanoid-robotics/docs/module-4-vla/vla-architectures" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"VLA Architectures: RT-1, RT-2, PaLM-E","item":"https://zainali24.github.io/physical-ai-humanoid-robotics/docs/module-4-vla/vla-architectures"}]}</script><link rel="stylesheet" href="/physical-ai-humanoid-robotics/assets/css/styles.c6fa2b59.css">
+<script src="/physical-ai-humanoid-robotics/assets/js/runtime~main.2e2f2fcc.js" defer="defer"></script>
+<script src="/physical-ai-humanoid-robotics/assets/js/main.7678cec2.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/physical-ai-humanoid-robotics/img/book_robotics_favicon_and_book_logo_image00.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/physical-ai-humanoid-robotics/"><div class="navbar__logo"><img src="/physical-ai-humanoid-robotics/img/book_robotics_favicon_and_book_logo_image00.png" alt="Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/physical-ai-humanoid-robotics/img/book_robotics_favicon_and_book_logo_image00.png" alt="Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Humanoid Robotics</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/physical-ai-humanoid-robotics/docs/preface">Book</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/physical-ai-humanoid-robotics/docs/preface"><span title="Preface" class="linkLabel_WmDU">Preface</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/physical-ai-humanoid-robotics/docs/intro-physical-ai"><span title="Introduction to Physical AI" class="linkLabel_WmDU">Introduction to Physical AI</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/physical-ai-humanoid-robotics/docs/module-1-ros2/ros2-fundamentals"><span title="Module 1: ROS 2 (The Robotic Nervous System)" class="categoryLinkLabel_W154">Module 1: ROS 2 (The Robotic Nervous System)</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-1-ros2/ros2-fundamentals"><span title="ROS 2 Fundamentals" class="linkLabel_WmDU">ROS 2 Fundamentals</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-1-ros2/nodes-topics-services"><span title="Nodes, Topics, and Services" class="linkLabel_WmDU">Nodes, Topics, and Services</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-1-ros2/building-packages-python"><span title="Building ROS 2 Packages with Python" class="linkLabel_WmDU">Building ROS 2 Packages with Python</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/physical-ai-humanoid-robotics/docs/module-2-gazebo/intro-gazebo"><span title="Module 2: Gazebo &amp; Unity (The Digital Twin)" class="categoryLinkLabel_W154">Module 2: Gazebo &amp; Unity (The Digital Twin)</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-2-gazebo/intro-gazebo"><span title="Introduction to Gazebo" class="linkLabel_WmDU">Introduction to Gazebo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-2-gazebo/unity-robotics"><span title="Unity for Robotics" class="linkLabel_WmDU">Unity for Robotics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-2-gazebo/simulation-best-practices"><span title="Simulation Best Practices" class="linkLabel_WmDU">Simulation Best Practices</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/physical-ai-humanoid-robotics/docs/module-3-isaac/intro-isaac"><span title="Module 3: NVIDIA Isaac (The AI-Robot Brain)" class="categoryLinkLabel_W154">Module 3: NVIDIA Isaac (The AI-Robot Brain)</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-3-isaac/intro-isaac"><span title="Introduction to NVIDIA Isaac" class="linkLabel_WmDU">Introduction to NVIDIA Isaac</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-3-isaac/isaac-sim"><span title="Isaac Sim for Robotics" class="linkLabel_WmDU">Isaac Sim for Robotics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-3-isaac/isaac-gym-rl"><span title="Reinforcement Learning with Isaac Gym" class="linkLabel_WmDU">Reinforcement Learning with Isaac Gym</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-3-isaac/isaac-sdk-overview"><span title="Isaac Platform Architecture" class="linkLabel_WmDU">Isaac Platform Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-3-isaac/ai-powered-perception"><span title="AI-Powered Perception" class="linkLabel_WmDU">AI-Powered Perception</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-3-isaac/reinforcement-learning"><span title="Advanced RL and Sim-to-Real Transfer" class="linkLabel_WmDU">Advanced RL and Sim-to-Real Transfer</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/physical-ai-humanoid-robotics/docs/module-4-vla/intro-vla"><span title="Module 4: VLA (Vision-Language-Action)" class="categoryLinkLabel_W154">Module 4: VLA (Vision-Language-Action)</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-4-vla/intro-vla"><span title="Introduction to VLA Models" class="linkLabel_WmDU">Introduction to VLA Models</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-4-vla/vla-architectures"><span title="VLA Architectures: RT-1, RT-2, PaLM-E" class="linkLabel_WmDU">VLA Architectures: RT-1, RT-2, PaLM-E</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-4-vla/vla-training-deployment"><span title="Training and Deploying VLA Systems" class="linkLabel_WmDU">Training and Deploying VLA Systems</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-4-vla/voice-to-action"><span title="Voice-to-Action with OpenAI Whisper" class="linkLabel_WmDU">Voice-to-Action with OpenAI Whisper</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-4-vla/cognitive-planning"><span title="Cognitive Planning with LLMs" class="linkLabel_WmDU">Cognitive Planning with LLMs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/physical-ai-humanoid-robotics/docs/module-4-vla/multimodal-interaction"><span title="Multi-modal Interaction (Speech, Gesture, Vision)" class="linkLabel_WmDU">Multi-modal Interaction (Speech, Gesture, Vision)</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/physical-ai-humanoid-robotics/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Module 4: VLA (Vision-Language-Action)</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">VLA Architectures: RT-1, RT-2, PaLM-E</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>VLA Architectures: RT-1, RT-2, PaLM-E</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
+<p>Before diving into this chapter, ensure you have:</p>
+<ul>
+<li class="">Completed <strong>Chapter 1: Introduction to VLA Models</strong> from this module</li>
+<li class="">Strong understanding of <strong>transformer architecture</strong> (self-attention, positional encodings, encoder-decoder)</li>
+<li class="">Familiarity with <strong>vision transformers (ViT)</strong> and token-based image processing</li>
+<li class="">Knowledge of <strong>language models</strong> (BERT, T5, GPT architecture)</li>
+<li class="">Experience with <strong>PyTorch</strong> or <strong>TensorFlow</strong> for reading model code</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="introduction">Introduction<a href="#introduction" class="hash-link" aria-label="Direct link to Introduction" title="Direct link to Introduction" translate="no">​</a></h2>
+<p>This chapter explores three groundbreaking VLA architectures that define the state-of-the-art in robot learning: <strong>RT-1 (Robotics Transformer 1)</strong>, <strong>RT-2 (Robotics Transformer 2)</strong>, and <strong>PaLM-E (Embodied Language Model)</strong>. Each model represents a different approach to integrating vision, language, and action:</p>
+<ul>
+<li class=""><strong>RT-1</strong> pioneered efficient visual tokenization and action discretization for robot control</li>
+<li class=""><strong>RT-2</strong> leveraged massive vision-language pretraining to achieve emergent reasoning capabilities</li>
+<li class=""><strong>PaLM-E</strong> scaled to 562 billion parameters, enabling multimodal planning and long-horizon tasks</li>
+</ul>
+<p>You&#x27;ll learn the architectural details of each model, understand their design trade-offs, and compare their strengths and limitations across real-world robotics benchmarks.</p>
+<p><strong>Learning Objectives:</strong></p>
+<ul>
+<li class="">Understand RT-1&#x27;s token learner and action tokenization mechanisms</li>
+<li class="">Explain how RT-2 leverages VLM pretraining for emergent robotic capabilities</li>
+<li class="">Analyze PaLM-E&#x27;s multimodal integration and planning architecture</li>
+<li class="">Compare RT-1, RT-2, and PaLM-E across key dimensions (parameters, data, performance)</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="rt-1-robotics-transformer-1">RT-1: Robotics Transformer 1<a href="#rt-1-robotics-transformer-1" class="hash-link" aria-label="Direct link to RT-1: Robotics Transformer 1" title="Direct link to RT-1: Robotics Transformer 1" translate="no">​</a></h2>
+<p><strong>RT-1</strong>, introduced by Google&#x27;s Robotics at Google team in December 2022, was the first large-scale VLA model to demonstrate broad generalization across hundreds of real-world robot tasks. Trained on <strong>130,000 demonstrations</strong> spanning <strong>700+ tasks</strong> in office kitchens, RT-1 achieved <strong>97% success</strong> on seen tasks and <strong>76% success</strong> on novel language instructions.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="architecture-overview">Architecture Overview<a href="#architecture-overview" class="hash-link" aria-label="Direct link to Architecture Overview" title="Direct link to Architecture Overview" translate="no">​</a></h3>
+<p>RT-1 consists of three core components:</p>
+<ol>
+<li class=""><strong>Token Learner</strong>: Compresses 300×300 RGB images into 81 visual tokens (9×9 grid)</li>
+<li class=""><strong>Transformer Encoder</strong>: Processes visual tokens + language tokens using 8 layers of self-attention</li>
+<li class=""><strong>Action Decoder</strong>: Outputs 11-dimensional action tokens (7 arm joints + 3 base velocities + 1 gripper)</li>
+</ol>
+<p>The key innovation is <strong>visual tokenization</strong>—instead of processing full images (90,000 pixels), RT-1 learns a compact 81-token representation, reducing computational cost by 1000× while preserving task-relevant visual information (object locations, gripper pose, scene context).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="token-learner-module">Token Learner Module<a href="#token-learner-module" class="hash-link" aria-label="Direct link to Token Learner Module" title="Direct link to Token Learner Module" translate="no">​</a></h3>
+<p>The <strong>Token Learner</strong> (Ryoo et al., 2021) uses <strong>learned attention</strong> to select the most relevant spatial regions from image features:</p>
+<p><strong>Architecture</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Input: 300×300×3 RGB image</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">↓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ResNet-50 backbone → 19×19×2048 feature map (6,859 spatial features)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">↓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Token Learner (spatial attention) → 81×512 visual tokens</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">↓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Output: 81 tokens representing key visual regions</span><br></span></code></pre></div></div>
+<p><strong>How it works</strong>:</p>
+<ol>
+<li class="">ResNet-50 extracts convolutional features from the image (19×19 spatial grid with 2048 channels)</li>
+<li class="">Token Learner applies a small MLP to each spatial location, producing an attention score</li>
+<li class="">Top-81 spatial regions (9×9 grid) are selected based on attention scores</li>
+<li class="">Selected features are projected to 512-dimensional visual tokens</li>
+</ol>
+<p><strong>Benefit</strong>: Reduces sequence length from 361 image patches (standard ViT) to 81 tokens, enabling faster inference (5 Hz on GPU) while focusing on task-relevant regions (robot gripper, target objects, obstacles).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="transformer-encoder-decoder">Transformer Encoder-Decoder<a href="#transformer-encoder-decoder" class="hash-link" aria-label="Direct link to Transformer Encoder-Decoder" title="Direct link to Transformer Encoder-Decoder" translate="no">​</a></h3>
+<p>RT-1 uses a <strong>12-layer transformer</strong> to process multimodal sequences:</p>
+<p><strong>Input sequence</strong>:</p>
+<ul>
+<li class="">81 visual tokens (from Token Learner)</li>
+<li class="">16 language tokens (BERT-encoded instruction like &quot;pick red apple&quot;)</li>
+<li class="">Total: 97 tokens</li>
+</ul>
+<p><strong>Encoder</strong> (8 layers):</p>
+<ul>
+<li class="">Self-attention across all 97 tokens to fuse vision and language</li>
+<li class="">Each token attends to all others, learning cross-modal alignments</li>
+<li class="">Example: Token representing &quot;red object region&quot; attends to language token &quot;red&quot; and &quot;apple&quot;</li>
+</ul>
+<p><strong>Decoder</strong> (4 layers):</p>
+<ul>
+<li class="">Predicts 11-dimensional action vector autoregressively</li>
+<li class="">Each action dimension is discretized into 256 bins (quantization)</li>
+<li class="">Output: Sequence of 11 discrete tokens representing joint angles and gripper state</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="action-tokenization">Action Tokenization<a href="#action-tokenization" class="hash-link" aria-label="Direct link to Action Tokenization" title="Direct link to Action Tokenization" translate="no">​</a></h3>
+<p>RT-1 discretizes continuous robot actions into <strong>discrete tokens</strong> for classification (instead of regression):</p>
+<p><strong>Continuous actions</strong>:</p>
+<ul>
+<li class="">7 arm joint angles (radians): [-π, π]</li>
+<li class="">3 base velocities (m/s): [-0.5, 0.5]</li>
+<li class="">1 gripper command: {open, close}</li>
+</ul>
+<p><strong>Tokenization</strong>:</p>
+<ol>
+<li class="">Divide each continuous range into 256 bins (8-bit quantization)<!-- -->
+<ul>
+<li class="">Example: Joint 1 range [-π, π] → bins [0, 255]</li>
+<li class="">Angle 1.57 rad → bin 192</li>
+</ul>
+</li>
+<li class="">Transformer predicts bin index (0-255) for each action dimension</li>
+<li class="">Bin index is converted back to continuous value during execution</li>
+</ol>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li class=""><strong>Classification loss</strong> (cross-entropy) more stable than regression loss (MSE) for high-dimensional actions</li>
+<li class=""><strong>Discretization prevents mode averaging</strong>: Avoids predicting average action when multiple valid actions exist (e.g., grasp left side vs. right side of object)</li>
+<li class=""><strong>Easier to train</strong>: Softmax outputs more robust than unbounded regression outputs</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="training-data">Training Data<a href="#training-data" class="hash-link" aria-label="Direct link to Training Data" title="Direct link to Training Data" translate="no">​</a></h3>
+<p>RT-1 was trained on the <strong>RT-1 dataset</strong>:</p>
+<ul>
+<li class=""><strong>130,000 teleoperation demonstrations</strong> collected over 17 months</li>
+<li class=""><strong>700+ tasks</strong> across 13 robots in office kitchens</li>
+<li class=""><strong>Instruction diversity</strong>: 1,000+ unique language instructions</li>
+<li class=""><strong>Object diversity</strong>: 200+ household objects (fruits, cans, bottles, utensils)</li>
+<li class=""><strong>Environment diversity</strong>: 5 different kitchen layouts with varying lighting and clutter</li>
+</ul>
+<p><strong>Data collection process</strong>:</p>
+<ol>
+<li class="">Human operator teleoperates robot using VR controller (Oculus Quest)</li>
+<li class="">Robot executes task while recording: camera images (10 Hz), language instruction, joint states, actions</li>
+<li class="">Successful demonstrations are labeled and added to dataset</li>
+<li class="">Failed attempts are discarded (no negative examples)</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="rt-1-performance">RT-1 Performance<a href="#rt-1-performance" class="hash-link" aria-label="Direct link to RT-1 Performance" title="Direct link to RT-1 Performance" translate="no">​</a></h3>
+<p><strong>Benchmark results</strong> (Google&#x27;s office kitchen robots, 2022):</p>
+<table><thead><tr><th>Task Category</th><th>Success Rate</th></tr></thead><tbody><tr><td>Seen tasks (trained)</td><td>97%</td></tr><tr><td>Novel instructions (unseen)</td><td>76%</td></tr><tr><td>Novel objects (seen category)</td><td>83%</td></tr><tr><td>Novel objects (unseen category)</td><td>62%</td></tr></tbody></table>
+<p><strong>Example capabilities</strong>:</p>
+<ul>
+<li class="">&quot;Move Coke can to the top drawer&quot; → 95% success</li>
+<li class="">&quot;Place apple in the blue bowl&quot; → 89% success (novel bowl color)</li>
+<li class="">&quot;Pick the fruit&quot; → 78% success (generalizes to unseen fruits: mango, kiwi)</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="rt-1-architecture-diagram">RT-1 Architecture Diagram<a href="#rt-1-architecture-diagram" class="hash-link" aria-label="Direct link to RT-1 Architecture Diagram" title="Direct link to RT-1 Architecture Diagram" translate="no">​</a></h2>
+<div class="language-mermaid codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-mermaid codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">flowchart TD</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    A[Camera Image&lt;br/&gt;300×300 RGB] --&gt; B[ResNet-50&lt;br/&gt;Backbone]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    B --&gt; C[Token Learner&lt;br/&gt;19×19×2048 → 81×512]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    D[Language Instruction&lt;br/&gt;&#x27;Pick up the apple&#x27;] --&gt; E[BERT Encoder&lt;br/&gt;16 tokens]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    C --&gt; F[Transformer Encoder&lt;br/&gt;8 layers, 97 tokens]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    E --&gt; F</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    F --&gt; G[Transformer Decoder&lt;br/&gt;4 layers]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    G --&gt; H[Action Tokens&lt;br/&gt;11 bins × 256 classes]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    H --&gt; I[Detokenize&lt;br/&gt;Bin → Continuous]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    I --&gt; J[Robot Execution&lt;br/&gt;7 joints + 3 base + 1 gripper]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    style A fill:#e1f5ff</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    style D fill:#fff4e1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    style H fill:#e8f5e9</span><br></span></code></pre></div></div>
+<p><strong>Alt text</strong>: RT-1 architecture flowchart showing image processing through ResNet-50 and Token Learner, language encoding through BERT, multimodal fusion in transformer encoder, action prediction in decoder, discretization into 256-bin tokens, and execution on robot.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="rt-2-robotics-transformer-2">RT-2: Robotics Transformer 2<a href="#rt-2-robotics-transformer-2" class="hash-link" aria-label="Direct link to RT-2: Robotics Transformer 2" title="Direct link to RT-2: Robotics Transformer 2" translate="no">​</a></h2>
+<p><strong>RT-2</strong>, released in July 2023, dramatically improved RT-1&#x27;s generalization by <strong>co-fine-tuning</strong> a pretrained vision-language model (VLM) on robot data. Instead of training from scratch, RT-2 leverages <strong>PaLI-X</strong> (55 billion parameters) pretrained on 10 billion image-text pairs from the internet, enabling <strong>emergent capabilities</strong> like reasoning about object properties, spatial relationships, and semantic categories.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-innovation-vlm-to-robot-transfer">Key Innovation: VLM-to-Robot Transfer<a href="#key-innovation-vlm-to-robot-transfer" class="hash-link" aria-label="Direct link to Key Innovation: VLM-to-Robot Transfer" title="Direct link to Key Innovation: VLM-to-Robot Transfer" translate="no">​</a></h3>
+<p><strong>Hypothesis</strong>: Vision-language models (VLMs) that understand &quot;a red apple is a fruit&quot; from web images can transfer this knowledge to robotic manipulation when fine-tuned on robot demonstrations.</p>
+<p><strong>Approach</strong>:</p>
+<ol>
+<li class="">Start with <strong>PaLI-X</strong> (55B parameters), a VLM pretrained on 10B image-text pairs (web images + captions)</li>
+<li class="">Extend output vocabulary: Add robot action tokens (256 bins × 11 dimensions = 2,816 new tokens)</li>
+<li class=""><strong>Co-fine-tune</strong> on both:<!-- -->
+<ul>
+<li class="">Web data: Image-caption pairs (e.g., &quot;a red apple on a table&quot;)</li>
+<li class="">Robot data: Image-action pairs (e.g., camera image → joint angles)</li>
+</ul>
+</li>
+<li class="">Model learns to generate <strong>text</strong> for language tasks and <strong>action tokens</strong> for robot tasks</li>
+</ol>
+<p><strong>Result</strong>: RT-2 can perform <strong>zero-shot reasoning</strong> unavailable to RT-1:</p>
+<ul>
+<li class="">&quot;Pick the extinct animal&quot; → Grasps toy dinosaur (never explicitly trained on &quot;extinct&quot; + &quot;dinosaur&quot;)</li>
+<li class="">&quot;Move the drink to the person&quot; → Identifies beverage cans and navigates toward humans</li>
+<li class="">&quot;Pick the item you&#x27;d use to hammer in a nail&quot; → Selects rock (tool affordance reasoning)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="architecture">Architecture<a href="#architecture" class="hash-link" aria-label="Direct link to Architecture" title="Direct link to Architecture" translate="no">​</a></h3>
+<p>RT-2 is based on <strong>PaLI-X</strong>, a vision-language model with:</p>
+<ol>
+<li class=""><strong>Vision Encoder</strong>: ViT-e (4B parameters) processes 224×224 images into 256 visual tokens</li>
+<li class=""><strong>Language Model</strong>: UL2 (51B parameters), a T5-style encoder-decoder transformer</li>
+<li class=""><strong>Multimodal Fusion</strong>: Cross-attention in decoder attends to visual tokens conditioned on language</li>
+</ol>
+<p><strong>Modifications for robotics</strong>:</p>
+<ul>
+<li class="">Add action tokenizer: Maps 11D continuous actions → 2,816 discrete action tokens</li>
+<li class="">Train with mixed objectives:<!-- -->
+<ul>
+<li class=""><strong>Language modeling</strong>: Predict next word given image + text prefix</li>
+<li class=""><strong>Action prediction</strong>: Predict action token given image + instruction</li>
+</ul>
+</li>
+</ul>
+<p><strong>Training</strong>:</p>
+<ul>
+<li class=""><strong>Pretraining</strong>: 10B image-text pairs from web (Google internal dataset, similar to LAION-5B)</li>
+<li class=""><strong>Fine-tuning</strong>: RT-1 dataset (130K demos) + RT-2 dataset (50K new demos)</li>
+<li class=""><strong>Co-fine-tuning</strong>: Alternate batches of web data (image captioning) and robot data (action prediction)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="emergent-capabilities">Emergent Capabilities<a href="#emergent-capabilities" class="hash-link" aria-label="Direct link to Emergent Capabilities" title="Direct link to Emergent Capabilities" translate="no">​</a></h3>
+<p>RT-2 demonstrates capabilities <strong>never explicitly trained</strong>:</p>
+<ol>
+<li class=""><strong>Semantic Reasoning</strong>: &quot;Pick the extinct animal&quot; → Correctly identifies toy dinosaur among multiple objects</li>
+<li class=""><strong>Spatial Reasoning</strong>: &quot;Move the cup to the left of the plate&quot; → Understands spatial prepositions from language pretraining</li>
+<li class=""><strong>Category Generalization</strong>: &quot;Pick the fruit&quot; → Generalizes to 15+ fruit types vs. 5 in RT-1</li>
+<li class=""><strong>Affordance Reasoning</strong>: &quot;Pick something to cut the apple&quot; → Selects knife (tool-use reasoning)</li>
+</ol>
+<p><strong>Performance vs. RT-1</strong>:</p>
+<table><thead><tr><th>Metric</th><th>RT-1</th><th>RT-2</th></tr></thead><tbody><tr><td>Seen tasks</td><td>97%</td><td>98%</td></tr><tr><td>Novel objects (seen category)</td><td>83%</td><td>91%</td></tr><tr><td>Novel objects (unseen category)</td><td>62%</td><td>79%</td></tr><tr><td>Symbolic reasoning tasks</td><td>0%</td><td>74%</td></tr></tbody></table>
+<p><strong>Symbolic reasoning examples</strong> (new capability):</p>
+<ul>
+<li class="">&quot;Pick the bag of chips&quot; → 85% success (understands &quot;bag&quot; packaging)</li>
+<li class="">&quot;Move the smallest object&quot; → 72% success (visual size comparison)</li>
+<li class="">&quot;Pick the emergency equipment&quot; → 68% success (fire extinguisher selected)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="inference">Inference<a href="#inference" class="hash-link" aria-label="Direct link to Inference" title="Direct link to Inference" translate="no">​</a></h3>
+<p>RT-2 runs inference at <strong>3 Hz</strong> on NVIDIA A100 GPU:</p>
+<p><strong>Latency breakdown</strong>:</p>
+<ul>
+<li class="">Vision encoding (ViT-e): 180ms</li>
+<li class="">Language encoding (UL2): 50ms</li>
+<li class="">Cross-attention + action decoding: 80ms</li>
+<li class="">Total: 310ms per action prediction</li>
+</ul>
+<p><strong>Deployment</strong>: RT-2 is deployed on Google&#x27;s mobile manipulator robots with:</p>
+<ul>
+<li class="">NVIDIA Jetson AGX Orin (edge GPU) running vision encoder (7 Hz)</li>
+<li class="">Cloud server running full RT-2 (3 Hz) via 5G connection</li>
+<li class="">Robot controller interpolates actions between predictions for smooth 20Hz execution</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="rt-2-architecture-diagram">RT-2 Architecture Diagram<a href="#rt-2-architecture-diagram" class="hash-link" aria-label="Direct link to RT-2 Architecture Diagram" title="Direct link to RT-2 Architecture Diagram" translate="no">​</a></h2>
+<div class="language-mermaid codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-mermaid codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">flowchart TD</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    A[Vision-Language Model&lt;br/&gt;PaLI-X 55B params] --&gt; B[Vision Encoder&lt;br/&gt;ViT-e 4B]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    A --&gt; C[Language Model&lt;br/&gt;UL2 51B]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    D[Pretraining&lt;br/&gt;10B image-text pairs] --&gt; A</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    E[Robot Camera&lt;br/&gt;224×224 RGB] --&gt; F[ViT-e&lt;br/&gt;256 visual tokens]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    G[Instruction&lt;br/&gt;&#x27;Pick the fruit&#x27;] --&gt; H[UL2 Encoder&lt;br/&gt;Language tokens]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    F --&gt; I[UL2 Decoder&lt;br/&gt;Cross-attention]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    H --&gt; I</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    I --&gt; J{Output Type}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    J --&gt;|Language Task| K[Text Tokens&lt;br/&gt;&#x27;A red apple&#x27;]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    J --&gt;|Robot Task| L[Action Tokens&lt;br/&gt;11D discretized]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    L --&gt; M[Robot Execution]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    style D fill:#ffe6e6</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    style A fill:#e6f3ff</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    style L fill:#e8f5e9</span><br></span></code></pre></div></div>
+<p><strong>Alt text</strong>: RT-2 architecture flowchart showing PaLI-X VLM pretrained on 10B image-text pairs, then co-fine-tuned to output either text tokens (language tasks) or action tokens (robot tasks) through shared vision encoder and language model.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="palm-e-embodied-language-model">PaLM-E: Embodied Language Model<a href="#palm-e-embodied-language-model" class="hash-link" aria-label="Direct link to PaLM-E: Embodied Language Model" title="Direct link to PaLM-E: Embodied Language Model" translate="no">​</a></h2>
+<p><strong>PaLM-E</strong> (March 2023) is the largest VLA model to date, integrating <strong>PaLM</strong> language model (540B parameters) with visual observations to enable <strong>multimodal planning</strong>, <strong>long-horizon reasoning</strong>, and <strong>state estimation</strong> for embodied agents.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="architecture-1">Architecture<a href="#architecture-1" class="hash-link" aria-label="Direct link to Architecture" title="Direct link to Architecture" translate="no">​</a></h3>
+<p>PaLM-E combines:</p>
+<ol>
+<li class=""><strong>PaLM</strong> (540B parameters): Large language model pretrained on 780B text tokens</li>
+<li class=""><strong>Vision Encoder</strong>: ViT-22B processes images into 256 visual tokens</li>
+<li class=""><strong>Sensor Encoders</strong>: Additional encoders for depth, LiDAR, proprioception (joint states)</li>
+<li class=""><strong>Multimodal Integration</strong>: Inject vision/sensor tokens into PaLM&#x27;s text sequence</li>
+</ol>
+<p><strong>Multimodal sequence</strong> (example):</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[TEXT] &quot;The robot should&quot; [IMAGE_TOKEN_1] ... [IMAGE_TOKEN_256] [TEXT] &quot;pick up the mug because&quot; [IMAGE_TOKEN_1] ... [TEXT] &quot;the user requested coffee.&quot;</span><br></span></code></pre></div></div>
+<p>Visual tokens are <strong>interleaved</strong> with text tokens, allowing PaLM to:</p>
+<ul>
+<li class="">Reason about visual observations using language priors</li>
+<li class="">Ground language in physical states (e.g., &quot;the mug is to the left&quot; requires spatial grounding)</li>
+<li class="">Generate action plans as text sequences (e.g., &quot;Step 1: Grasp mug. Step 2: Move to coffee machine.&quot;)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="training-strategy">Training Strategy<a href="#training-strategy" class="hash-link" aria-label="Direct link to Training Strategy" title="Direct link to Training Strategy" translate="no">​</a></h3>
+<p>PaLM-E uses <strong>multi-task co-training</strong> across diverse modalities:</p>
+<p><strong>Tasks</strong>:</p>
+<ol>
+<li class=""><strong>Vision-language</strong>: Image captioning, VQA (Visual Question Answering)</li>
+<li class=""><strong>Robotics</strong>: Manipulation tasks (RT-1 dataset + 20,000 long-horizon demos)</li>
+<li class=""><strong>Embodied QA</strong>: &quot;What object is on the table?&quot; given robot camera feed</li>
+<li class=""><strong>State estimation</strong>: Predict object poses from images</li>
+<li class=""><strong>Planning</strong>: Generate task plans given goals (&quot;make coffee&quot; → multi-step plan)</li>
+</ol>
+<p><strong>Training details</strong>:</p>
+<ul>
+<li class=""><strong>562B parameters</strong> (largest embodied model)</li>
+<li class=""><strong>100,000 robot demos</strong> across 20 robots</li>
+<li class=""><strong>10M image-text pairs</strong> for vision-language grounding</li>
+<li class=""><strong>Mixed-precision training</strong> on 2048 TPU v4 chips for 1 month</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="long-horizon-planning">Long-Horizon Planning<a href="#long-horizon-planning" class="hash-link" aria-label="Direct link to Long-Horizon Planning" title="Direct link to Long-Horizon Planning" translate="no">​</a></h3>
+<p>PaLM-E can decompose high-level goals into <strong>multi-step action sequences</strong>:</p>
+<p><strong>Example</strong>: &quot;Prepare a meal&quot;</p>
+<ol>
+<li class="">Understand goal: Parse &quot;prepare a meal&quot; → sequence of sub-tasks</li>
+<li class="">Visual grounding: Identify ingredients on counter (tomato, bread, cheese)</li>
+<li class="">Generate plan:<!-- -->
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Step 1: Grasp knife</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Step 2: Cut tomato into slices</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Step 3: Open bread bag</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Step 4: Place tomato slices on bread</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Step 5: Add cheese</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Step 6: Close sandwich</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Step 7: Serve to user</span><br></span></code></pre></div></div>
+</li>
+<li class="">Execute: Convert each step into low-level actions using RT-1-style action decoder</li>
+<li class="">Monitor: After each step, re-perceive scene and adjust plan if needed</li>
+</ol>
+<p><strong>Closed-loop execution</strong>:</p>
+<ul>
+<li class="">After &quot;Step 1: Grasp knife&quot;, PaLM-E checks: &quot;Did I successfully grasp the knife?&quot;</li>
+<li class="">If yes: Proceed to Step 2</li>
+<li class="">If no: Replan: &quot;The knife is out of reach. Step 1b: Navigate closer to the counter.&quot;</li>
+</ul>
+<p><strong>Success rate</strong> on long-horizon tasks (5-20 steps):</p>
+<ul>
+<li class="">Simple tasks (3-5 steps): 87% success</li>
+<li class="">Medium tasks (6-10 steps): 68% success</li>
+<li class="">Complex tasks (11-20 steps): 52% success</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="multimodal-reasoning">Multimodal Reasoning<a href="#multimodal-reasoning" class="hash-link" aria-label="Direct link to Multimodal Reasoning" title="Direct link to Multimodal Reasoning" translate="no">​</a></h3>
+<p>PaLM-E can answer questions requiring <strong>cross-modal reasoning</strong>:</p>
+<p><strong>Example interactions</strong>:</p>
+<p><strong>User</strong>: &quot;Why is the drawer stuck?&quot; (given robot camera showing drawer)
+<strong>PaLM-E</strong>: &quot;The spoon is blocking the drawer from closing fully. The handle is wedged against the drawer frame.&quot;</p>
+<p><strong>User</strong>: &quot;Can I stack the glass on the plate?&quot;
+<strong>PaLM-E</strong>: &quot;No, the glass is too large and heavy. It would likely slide off or tip over. Place it next to the plate instead.&quot;</p>
+<p><strong>User</strong>: &quot;What&#x27;s the fastest way to sort these items by color?&quot;
+<strong>PaLM-E</strong>: &quot;Group by primary color first (reds together, blues together), then fine-tune within groups. Start with the largest items to save space.&quot;</p>
+<p><strong>Reasoning types</strong>:</p>
+<ul>
+<li class=""><strong>Physical reasoning</strong>: Weight, balance, friction, stability</li>
+<li class=""><strong>Spatial reasoning</strong>: Proximity, containment, occlusion</li>
+<li class=""><strong>Causal reasoning</strong>: &quot;If I move X, then Y will happen&quot;</li>
+<li class=""><strong>Temporal reasoning</strong>: &quot;Do X before Y&quot; (order constraints)</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="architecture-comparison-table">Architecture Comparison Table<a href="#architecture-comparison-table" class="hash-link" aria-label="Direct link to Architecture Comparison Table" title="Direct link to Architecture Comparison Table" translate="no">​</a></h2>
+<table><thead><tr><th>Aspect</th><th>RT-1</th><th>RT-2</th><th>PaLM-E</th></tr></thead><tbody><tr><td><strong>Parameters</strong></td><td>35M</td><td>55B (4B vision + 51B language)</td><td>562B (22B vision + 540B language)</td></tr><tr><td><strong>Pretraining</strong></td><td>None (trained from scratch)</td><td>PaLI-X on 10B image-text pairs</td><td>PaLM on 780B text tokens + ViT-22B</td></tr><tr><td><strong>Training Data</strong></td><td>130K robot demos</td><td>180K robot demos + web data</td><td>100K robot demos + 10M image-text pairs</td></tr><tr><td><strong>Tasks</strong></td><td>Single-step manipulation</td><td>Single-step + reasoning</td><td>Long-horizon planning (5-20 steps)</td></tr><tr><td><strong>Generalization</strong></td><td>Novel objects (same category)</td><td>Novel objects + symbolic reasoning</td><td>Cross-domain transfer + planning</td></tr><tr><td><strong>Inference Speed</strong></td><td>5 Hz (GPU)</td><td>3 Hz (A100 GPU)</td><td>0.5 Hz (2048 TPU)</td></tr><tr><td><strong>Novel Capabilities</strong></td><td>Action tokenization</td><td>Emergent reasoning from VLM</td><td>Multimodal QA, state estimation</td></tr><tr><td><strong>Use Cases</strong></td><td>Warehouse picking, assembly</td><td>Household robots, retail</td><td>Research, complex planning</td></tr><tr><td><strong>Deployment</strong></td><td>Edge devices (Jetson Orin)</td><td>Cloud + edge hybrid</td><td>Cloud-only (TPU inference)</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="design-trade-offs">Design Trade-offs<a href="#design-trade-offs" class="hash-link" aria-label="Direct link to Design Trade-offs" title="Direct link to Design Trade-offs" translate="no">​</a></h3>
+<p><strong>RT-1</strong>:</p>
+<ul>
+<li class="">✅ Fast inference (5 Hz)</li>
+<li class="">✅ Compact model (35M params) for edge deployment</li>
+<li class="">❌ Limited generalization to novel categories</li>
+<li class="">❌ No reasoning about object properties</li>
+</ul>
+<p><strong>RT-2</strong>:</p>
+<ul>
+<li class="">✅ Emergent reasoning (pick extinct animal, smallest object)</li>
+<li class="">✅ Strong zero-shot generalization (79% on novel objects)</li>
+<li class="">❌ Slow inference (3 Hz) requires powerful GPU</li>
+<li class="">❌ Cannot handle long-horizon tasks (&gt;1 step)</li>
+</ul>
+<p><strong>PaLM-E</strong>:</p>
+<ul>
+<li class="">✅ Long-horizon planning (20+ steps)</li>
+<li class="">✅ Multimodal reasoning (answer &quot;why&quot; questions)</li>
+<li class="">❌ Extremely slow (0.5 Hz inference)</li>
+<li class="">❌ Requires TPU cluster (not deployable on robots)</li>
+</ul>
+<p><strong>Recommendation</strong>:</p>
+<ul>
+<li class=""><strong>Production systems</strong>: RT-1 or RT-2 (deployable, real-time performance)</li>
+<li class=""><strong>Research</strong>: PaLM-E (push boundaries of what&#x27;s possible)</li>
+<li class=""><strong>Hybrid approach</strong>: PaLM-E for high-level planning, RT-2 for low-level execution</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="hands-on-exercises">Hands-On Exercises<a href="#hands-on-exercises" class="hash-link" aria-label="Direct link to Hands-On Exercises" title="Direct link to Hands-On Exercises" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exercise-1-read-rt-1-paper-in-depth">Exercise 1: Read RT-1 Paper in Depth<a href="#exercise-1-read-rt-1-paper-in-depth" class="hash-link" aria-label="Direct link to Exercise 1: Read RT-1 Paper in Depth" title="Direct link to Exercise 1: Read RT-1 Paper in Depth" translate="no">​</a></h3>
+<p>Access the original RT-1 paper: <a href="https://arxiv.org/abs/2212.06817" target="_blank" rel="noopener noreferrer" class="">RT-1: Robotics Transformer for Real-World Control at Scale</a></p>
+<p><strong>Tasks</strong>:</p>
+<ol>
+<li class="">Explain the Token Learner architecture in detail. How does it reduce sequence length from 361 to 81 tokens?</li>
+<li class="">Why did the authors choose action discretization (256 bins) over continuous action regression?</li>
+<li class="">Analyze Table 2 (generalization results). What factors contribute to the 21% drop in success rate for novel instructions (76% vs. 97%)?</li>
+<li class="">Reproduce the RT-1 architecture diagram in Figure 2. Label all components and data dimensions.</li>
+</ol>
+<p><strong>Expected time</strong>: 60 minutes
+<strong>Learning goal</strong>: Deep understanding of RT-1 design decisions and their empirical justification.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exercise-2-compare-rt-2-improvements-over-rt-1">Exercise 2: Compare RT-2 Improvements Over RT-1<a href="#exercise-2-compare-rt-2-improvements-over-rt-1" class="hash-link" aria-label="Direct link to Exercise 2: Compare RT-2 Improvements Over RT-1" title="Direct link to Exercise 2: Compare RT-2 Improvements Over RT-1" translate="no">​</a></h3>
+<p>Create a detailed comparison document covering:</p>
+<p><strong>Technical improvements</strong>:</p>
+<ol>
+<li class="">Vision encoder: ResNet-50 + Token Learner (RT-1) vs. ViT-e (RT-2)</li>
+<li class="">Language model: BERT (RT-1) vs. UL2 (RT-2)</li>
+<li class="">Training data: 130K robot demos (RT-1) vs. 180K + 10B web pairs (RT-2)</li>
+<li class="">Model size: 35M (RT-1) vs. 55B (RT-2)</li>
+</ol>
+<p><strong>Capability improvements</strong>:</p>
+<ol>
+<li class="">Quantify generalization gains (use Tables 3-4 from RT-2 paper)</li>
+<li class="">List 5 emergent capabilities in RT-2 absent in RT-1</li>
+<li class="">Analyze failure modes: What tasks still fail for both models?</li>
+</ol>
+<p><strong>Trade-offs</strong>:</p>
+<ol>
+<li class="">Inference speed: RT-1 (5 Hz) vs. RT-2 (3 Hz)</li>
+<li class="">Deployment: RT-1 on Jetson Orin vs. RT-2 requiring A100</li>
+</ol>
+<p><strong>Expected time</strong>: 45 minutes
+<strong>Learning goal</strong>: Understand how VLM pretraining enables emergent robotic capabilities.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exercise-3-analyze-palm-e-multimodal-integration">Exercise 3: Analyze PaLM-E Multimodal Integration<a href="#exercise-3-analyze-palm-e-multimodal-integration" class="hash-link" aria-label="Direct link to Exercise 3: Analyze PaLM-E Multimodal Integration" title="Direct link to Exercise 3: Analyze PaLM-E Multimodal Integration" translate="no">​</a></h3>
+<p>Read Section 3.2 of the PaLM-E paper (<a href="https://arxiv.org/abs/2303.03378" target="_blank" rel="noopener noreferrer" class="">PaLM-E: An Embodied Multimodal Language Model</a>)</p>
+<p><strong>Tasks</strong>:</p>
+<ol>
+<li class="">How are visual tokens interleaved with text tokens in PaLM-E&#x27;s input sequence?</li>
+<li class="">What is the advantage of interleaving over concatenation (vision first, then text)?</li>
+<li class="">Analyze Figure 5 (long-horizon planning example). How does PaLM-E handle execution failures mid-plan?</li>
+<li class="">Why does PaLM-E use 562B parameters vs. RT-2&#x27;s 55B? What capabilities require the extra scale?</li>
+</ol>
+<p><strong>Expected time</strong>: 50 minutes
+<strong>Learning goal</strong>: Understand multimodal integration strategies for embodied AI.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exercise-4-reproduce-architecture-diagrams">Exercise 4: Reproduce Architecture Diagrams<a href="#exercise-4-reproduce-architecture-diagrams" class="hash-link" aria-label="Direct link to Exercise 4: Reproduce Architecture Diagrams" title="Direct link to Exercise 4: Reproduce Architecture Diagrams" translate="no">​</a></h3>
+<p>Using Mermaid or draw.io, create architecture diagrams for:</p>
+<ol>
+<li class="">
+<p><strong>RT-1 full pipeline</strong>: Camera → ResNet → Token Learner → Transformer → Actions</p>
+<ul>
+<li class="">Include tensor dimensions at each stage</li>
+<li class="">Show Token Learner&#x27;s spatial attention mechanism</li>
+</ul>
+</li>
+<li class="">
+<p><strong>RT-2 co-fine-tuning</strong>: Web data + robot data → PaLI-X → text OR actions</p>
+<ul>
+<li class="">Show branching between language tasks and robot tasks</li>
+<li class="">Label pretrained components vs. fine-tuned components</li>
+</ul>
+</li>
+<li class="">
+<p><strong>PaLM-E interleaved sequence</strong>: Text + images → PaLM → planning</p>
+<ul>
+<li class="">Show example sequence with [TEXT] and [IMAGE] tokens</li>
+<li class="">Illustrate closed-loop execution with replanning</li>
+</ul>
+</li>
+</ol>
+<p><strong>Expected time</strong>: 60 minutes
+<strong>Learning goal</strong>: Solidify understanding through visual representation.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-takeaways">Key Takeaways<a href="#key-takeaways" class="hash-link" aria-label="Direct link to Key Takeaways" title="Direct link to Key Takeaways" translate="no">​</a></h2>
+<ul>
+<li class="">
+<p><strong>RT-1 pioneered VLA models</strong> by introducing token learner for efficient visual compression (19×19 → 9×9 tokens), action discretization into 256 bins to prevent mode averaging, and training on 130K real-world robot demonstrations across 700 tasks, achieving 97% success on seen tasks and 76% on novel instructions.</p>
+</li>
+<li class="">
+<p><strong>RT-2 leveraged vision-language pretraining</strong> by co-fine-tuning PaLI-X (55B parameters) on 10B web image-text pairs and robot data, enabling emergent capabilities like symbolic reasoning (&quot;pick extinct animal&quot;), affordance understanding (&quot;item to hammer a nail&quot;), and improved generalization (79% on novel objects vs. 62% for RT-1).</p>
+</li>
+<li class="">
+<p><strong>PaLM-E scaled to 562B parameters</strong> by integrating PaLM language model (540B) with ViT-22B vision encoder, supporting long-horizon planning (5-20 step tasks at 52-87% success), multimodal reasoning (answering &quot;why&quot; questions about physical states), and state estimation from visual observations.</p>
+</li>
+<li class="">
+<p><strong>Token learner reduces computational cost</strong> by learning spatial attention over ResNet features to select 81 most task-relevant tokens instead of processing all 361 image patches, achieving 1000× reduction in FLOPs while preserving object locations, gripper pose, and scene context needed for manipulation.</p>
+</li>
+<li class="">
+<p><strong>Action tokenization outperforms regression</strong> by discretizing continuous robot actions into 256 bins per dimension and framing control as classification (cross-entropy loss), preventing mode averaging when multiple valid actions exist and improving training stability for high-dimensional action spaces (11D for RT-1).</p>
+</li>
+<li class="">
+<p><strong>VLM transfer enables emergent reasoning</strong> because vision-language models pretrained on internet data (e.g., &quot;red apple is fruit&quot;) transfer semantic knowledge to robotics when fine-tuned on robot demonstrations, allowing RT-2 to generalize to unseen categories (&quot;extinct animal&quot; → dinosaur) without explicit training on category labels.</p>
+</li>
+<li class="">
+<p><strong>Architecture trade-offs span inference speed, generalization, and planning</strong> with RT-1 optimized for edge deployment (5 Hz, 35M params), RT-2 balancing reasoning and speed (3 Hz, 55B params), and PaLM-E prioritizing capabilities over efficiency (0.5 Hz, 562B params), requiring different deployment strategies (edge vs. cloud hybrid vs. cloud-only).</p>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="navigation">Navigation<a href="#navigation" class="hash-link" aria-label="Direct link to Navigation" title="Direct link to Navigation" translate="no">​</a></h2>
+<p><strong>Previous Chapter</strong>: <a class="" href="/physical-ai-humanoid-robotics/docs/module-4-vla/intro-vla">Introduction to VLA Models</a>
+<strong>Next Chapter</strong>: <a class="" href="/physical-ai-humanoid-robotics/docs/module-4-vla/vla-training-deployment">Training and Deploying VLA Systems</a></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-4-vla/vla-architectures.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/physical-ai-humanoid-robotics/docs/module-4-vla/intro-vla"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Introduction to VLA Models</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/physical-ai-humanoid-robotics/docs/module-4-vla/vla-training-deployment"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Training and Deploying VLA Systems</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#introduction" class="table-of-contents__link toc-highlight">Introduction</a></li><li><a href="#rt-1-robotics-transformer-1" class="table-of-contents__link toc-highlight">RT-1: Robotics Transformer 1</a><ul><li><a href="#architecture-overview" class="table-of-contents__link toc-highlight">Architecture Overview</a></li><li><a href="#token-learner-module" class="table-of-contents__link toc-highlight">Token Learner Module</a></li><li><a href="#transformer-encoder-decoder" class="table-of-contents__link toc-highlight">Transformer Encoder-Decoder</a></li><li><a href="#action-tokenization" class="table-of-contents__link toc-highlight">Action Tokenization</a></li><li><a href="#training-data" class="table-of-contents__link toc-highlight">Training Data</a></li><li><a href="#rt-1-performance" class="table-of-contents__link toc-highlight">RT-1 Performance</a></li></ul></li><li><a href="#rt-1-architecture-diagram" class="table-of-contents__link toc-highlight">RT-1 Architecture Diagram</a></li><li><a href="#rt-2-robotics-transformer-2" class="table-of-contents__link toc-highlight">RT-2: Robotics Transformer 2</a><ul><li><a href="#key-innovation-vlm-to-robot-transfer" class="table-of-contents__link toc-highlight">Key Innovation: VLM-to-Robot Transfer</a></li><li><a href="#architecture" class="table-of-contents__link toc-highlight">Architecture</a></li><li><a href="#emergent-capabilities" class="table-of-contents__link toc-highlight">Emergent Capabilities</a></li><li><a href="#inference" class="table-of-contents__link toc-highlight">Inference</a></li></ul></li><li><a href="#rt-2-architecture-diagram" class="table-of-contents__link toc-highlight">RT-2 Architecture Diagram</a></li><li><a href="#palm-e-embodied-language-model" class="table-of-contents__link toc-highlight">PaLM-E: Embodied Language Model</a><ul><li><a href="#architecture-1" class="table-of-contents__link toc-highlight">Architecture</a></li><li><a href="#training-strategy" class="table-of-contents__link toc-highlight">Training Strategy</a></li><li><a href="#long-horizon-planning" class="table-of-contents__link toc-highlight">Long-Horizon Planning</a></li><li><a href="#multimodal-reasoning" class="table-of-contents__link toc-highlight">Multimodal Reasoning</a></li></ul></li><li><a href="#architecture-comparison-table" class="table-of-contents__link toc-highlight">Architecture Comparison Table</a><ul><li><a href="#design-trade-offs" class="table-of-contents__link toc-highlight">Design Trade-offs</a></li></ul></li><li><a href="#hands-on-exercises" class="table-of-contents__link toc-highlight">Hands-On Exercises</a><ul><li><a href="#exercise-1-read-rt-1-paper-in-depth" class="table-of-contents__link toc-highlight">Exercise 1: Read RT-1 Paper in Depth</a></li><li><a href="#exercise-2-compare-rt-2-improvements-over-rt-1" class="table-of-contents__link toc-highlight">Exercise 2: Compare RT-2 Improvements Over RT-1</a></li><li><a href="#exercise-3-analyze-palm-e-multimodal-integration" class="table-of-contents__link toc-highlight">Exercise 3: Analyze PaLM-E Multimodal Integration</a></li><li><a href="#exercise-4-reproduce-architecture-diagrams" class="table-of-contents__link toc-highlight">Exercise 4: Reproduce Architecture Diagrams</a></li></ul></li><li><a href="#key-takeaways" class="table-of-contents__link toc-highlight">Key Takeaways</a></li><li><a href="#navigation" class="table-of-contents__link toc-highlight">Navigation</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Book</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/physical-ai-humanoid-robotics/docs/preface">Preface</a></li><li class="footer__item"><a class="footer__link-item" href="/physical-ai-humanoid-robotics/docs/intro-physical-ai">Introduction to Physical AI</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Modules</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/physical-ai-humanoid-robotics/docs/module-1-ros2/ros2-fundamentals">Module 1: ROS 2</a></li><li class="footer__item"><a class="footer__link-item" href="/physical-ai-humanoid-robotics/docs/module-2-gazebo/intro-gazebo">Module 2: Gazebo &amp; Unity</a></li><li class="footer__item"><a class="footer__link-item" href="/physical-ai-humanoid-robotics/docs/module-3-isaac/isaac-sdk-overview">Module 3: NVIDIA Isaac</a></li><li class="footer__item"><a class="footer__link-item" href="/physical-ai-humanoid-robotics/docs/module-4-vla/voice-to-action">Module 4: VLA</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Built with Docusaurus for Physical AI & Humanoid Robotics</div></div></div></footer></div>
+</body>
+</html>

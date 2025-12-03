@@ -1,0 +1,43 @@
+# Publish-Subscribe Pattern Diagram
+# This file documents the pub-sub pattern in ROS 2
+# Convert to Mermaid sequence diagram or PNG image
+
+```
+Publisher Node                  Topic                 Subscriber Node 1
+     │                           │                           │
+     │                           │                           │
+     │──publish message─────────>│                           │
+     │                           │                           │
+     │                           │<─────subscribe────────────│
+     │                           │                           │
+     │──publish message─────────>│                           │
+     │                           │──forward message────────>│
+     │                           │                           │
+     │                           │                    Subscriber Node 2
+     │                           │                           │
+     │                           │<─────subscribe────────────│
+     │                           │                           │
+     │──publish message─────────>│                           │
+     │                           │──forward message────────>│
+     │                           │──forward message────────>│
+```
+
+Alt Text: "Publish-subscribe pattern diagram showing publisher sending messages to topic, multiple subscribers receiving messages asynchronously"
+
+Mermaid Code:
+```mermaid
+sequenceDiagram
+    participant Pub as Publisher Node
+    participant Topic as /sensor_data
+    participant Sub1 as Subscriber 1
+    participant Sub2 as Subscriber 2
+
+    Sub1->>Topic: subscribe()
+    Sub2->>Topic: subscribe()
+
+    loop Every 100ms
+        Pub->>Topic: publish(data)
+        Topic->>Sub1: callback(data)
+        Topic->>Sub2: callback(data)
+    end
+```

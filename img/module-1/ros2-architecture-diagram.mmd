@@ -1,0 +1,11 @@
+graph TD
+    A[Application Layer<br/>Your Robot Code] --> B[rclpy/rclcpp<br/>Python/C++ Client Libraries]
+    B --> C[ROS 2 Client Library rcl<br/>Language-Independent Core]
+    C --> D[DDS Implementation<br/>Fast-RTPS, Cyclone DDS]
+    D --> E[Network Layer<br/>UDP/TCP Communication]
+
+    style A fill:#e1f5ff,stroke:#01579b,stroke-width:2px
+    style B fill:#fff4e1,stroke:#ff6f00,stroke-width:2px
+    style C fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style D fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px

@@ -1,0 +1,25 @@
+graph TD
+    Workspace[ros2_ws/<br/>ROS 2 Workspace] --> Src[src/<br/>Source Packages]
+    Workspace --> Build[build/<br/>Build Artifacts]
+    Workspace --> Install[install/<br/>Installed Files]
+    Workspace --> Log[log/<br/>Build Logs]
+
+    Src --> Pkg1[my_robot_package/]
+    Src --> Pkg2[sensor_package/]
+    Src --> Pkg3[control_package/]
+
+    Build --> BuildPkg1[my_robot_package/]
+    Build --> BuildPkg2[sensor_package/]
+
+    Install --> InstallSetup[setup.bash<br/>Environment Setup]
+    Install --> InstallLocal[local_setup.bash]
+    Install --> InstallLib[lib/<br/>Executables]
+
+    Log --> LogBuild[build_*.log]
+    Log --> LogTest[test_*.log]
+
+    style Workspace fill:#e1f5ff,stroke:#01579b,stroke-width:3px
+    style Src fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    style Build fill:#fff4e1,stroke:#ff6f00,stroke-width:2px
+    style Install fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style Log fill:#fce4ec,stroke:#880e4f,stroke-width:2px
