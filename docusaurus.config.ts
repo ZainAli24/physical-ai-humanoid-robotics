@@ -105,7 +105,7 @@ const config: Config = {
             },
             {
               label: 'Module 2: Gazebo & Unity',
-              to: '/docs/module-2-gazebo/gazebo-simulation',
+              to: '/docs/module-2-gazebo/intro-gazebo',
             },
             {
               label: 'Module 3: NVIDIA Isaac',

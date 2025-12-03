@@ -208,15 +208,15 @@ Each user story delivers a complete, independently testable chapter that can be 
 ### Documentation
 
 - [X] T095 Update code-examples-catalog.md with final test status (✅ Tested) for all 17+ code examples
-- [ ] T096 Update content-outline.md with final word counts for all 3 chapters
-- [ ] T097 [P] Create visual-assets-plan.md documenting all 7-9 images created with filenames, alt text, and placement
+- [X] T096 Update content-outline.md with final word counts for all 3 chapters
+- [X] T097 [P] Create visual-assets-plan.md documenting all 7-9 images created with filenames, alt text, and placement
 
 ### Git Workflow
 
-- [ ] T098 Review all changes: Run `git status` and `git diff` to see all modified files (3 chapters, 7-9 images, planning docs)
-- [ ] T099 Stage all changes: Run `git add .` to stage all content files and images
-- [ ] T100 Create commit with detailed message describing Module 1 complete content (3 chapters, 17+ code examples, 7-9 images, 13+ exercises)
-- [ ] T101 Verify commit: Run `git log -1` to confirm commit message and file count
+- [X] T098 Review all changes: Run `git status` and `git diff` to see all modified files (3 chapters, 7-9 images, planning docs)
+- [X] T099 Stage all changes: Run `git add .` to stage all content files and images
+- [X] T100 Create commit with detailed message describing Module 1 complete content (3 chapters, 17+ code examples, 7-9 images, 13+ exercises)
+- [X] T101 Verify commit: Run `git log -1` to confirm commit message and file count
 
 **Checkpoint**: At this point, Module 1 ROS 2 Complete Content is fully implemented, tested, and ready for deployment. All 3 chapters are publication-ready with working code examples, visual aids, and hands-on exercises.
 

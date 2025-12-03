@@ -1516,4 +1516,4 @@ Modify the `circle_controller.py` to make the turtle move in a **square pattern*
 ---
 
 **Previous**: [Nodes, Topics, and Services](./nodes-topics-services.md)
-**Next**: [Module 2: Gazebo & Unity](../module-2-gazebo/gazebo-simulation.md)
+**Next**: [Module 2: Gazebo & Unity](../module-2-gazebo/intro-gazebo.md)

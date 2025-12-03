@@ -28,3 +28,39 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Image and caption styling for docs */
+article img {
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] article img {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Caption styling - italic text right after image */
+article img + em {
+  display: block;
+  text-align: center;
+  margin: -1.5rem auto 2rem;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+[data-theme='dark'] article img + em {
+  color: #aaa;
+}
+
+/* Ensure proper spacing after image+caption block */
+article img + em + h2,
+article img + em + h3,
+article img + em + p {
+  margin-top: 2rem;
+}

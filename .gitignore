@@ -1,5 +1,9 @@
 # Dependencies
 /node_modules
+.env
+
+Hackathon_ Physical_AI_&_Humanoid_Robotics_Textbook.md
+
 
 # Production
 /build
