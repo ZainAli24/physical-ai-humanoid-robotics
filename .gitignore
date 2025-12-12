@@ -1,9 +1,11 @@
 # Dependencies
 /node_modules
 .env
+*.env
+!.env.example
 
+# Hackathon documentation (not needed for deployment)
 Hackathon_ Physical_AI_&_Humanoid_Robotics_Textbook.md
-
 
 # Production
 /build
@@ -22,3 +24,61 @@ Hackathon_ Physical_AI_&_Humanoid_Robotics_Textbook.md
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Backend environment files (SENSITIVE)
+rag-chatbot-backend/.env
+rag-chatbot-backend/venv/
+rag-chatbot-backend/__pycache__/
+
+# Playwright MCP (not needed for deployment)
+.playwright-mcp/
+
+# Development documentation (not needed for deployment)
+BETTER_AUTH_SETUP.md
+IMPLEMENTATION_PLAN.md
+ITERATION_ROADMAP.md
+iteration-1-prompts.md
+iteration-2-prompts.md
+iteration-3-plan-prompt.md
+iteration-3-specify-prompt.md
+my_ragchatbot_prompt.md
+QDRANT_DIRECT_ACCESS.md
+TEST_RESULTS_*.md
+
+# Specs and planning (not needed for deployment)
+specs/
+history/
+
+# Claude Code configuration (not needed for deployment)
+.claude/
+.specify/
+
+# Alembic migrations (backend)
+rag-chatbot-backend/database/migrations/versions/*.py
+!rag-chatbot-backend/database/migrations/versions/__init__.py
+
+# Sensitive keys and credentials
+**/secrets/
+**/*_key
+**/*_secret
+*.pem
+*.key
+*.cert

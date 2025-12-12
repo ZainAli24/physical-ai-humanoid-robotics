@@ -1,32 +1,51 @@
 <!--
 SYNC IMPACT REPORT
 ===================
-Version Change: NEW → 1.0.0
-Created: 2025-11-29
-Type: Initial Constitution
+Version Change: 1.0.0 → 1.1.0
+Updated: 2025-12-03
+Type: Extension for RAG Chatbot Feature
 
 Principles Added:
-- I. Educational Excellence
-- II. Visual-Heavy Learning
-- III. Progressive Complexity
-- IV. Fast & Accessible
-- V. Reference-First Design
-- VI. Practical & Hands-On
+- VII. Knowledge Grounding & Accuracy
+- VIII. Query Resolution & UX
+- IX. Privacy & Data Minimization
+
+Rationale:
+RAG-powered chatbot requires specific quality standards for AI-generated
+responses, user experience, and data handling. Original principles (I-VI)
+covered textbook content only. New principles ensure chatbot maintains
+educational integrity while protecting user privacy.
+
+Impact Analysis:
+- Features affected: 004-rag-chat, 005-text-selection, 006-auth-sessions
+- Existing textbook content (Principles I-VI) unchanged
+- Quality gates extended with RAG metrics:
+  * Retrieval accuracy > 90%
+  * Hallucination rate < 5%
+  * Response time p95 < 3s
+  * Citation accuracy > 98%
 
 Templates Status:
-✅ Initial constitution created
-⚠ plan-template.md - Review constitution check section
-⚠ spec-template.md - Align with quality standards
-⚠ tasks-template.md - Ensure testing/quality tasks
+✅ Constitution extended with RAG principles
+⚠ spec-template.md - Add RAG behavior section for chatbot features
+⚠ plan-template.md - Add RAG architecture subsection
+⚠ tasks-template.md - Add RAG testing phase with quality gates
 
 Follow-up TODOs:
-- None (all placeholders filled)
+- Create feature specs: 004-rag-chat, 005-text-selection, 006-auth-sessions
+- Define 50-question eval dataset for hallucination testing
+- Update quality gates in pre-deployment checklist
+- Create ADR for Gemini vs GPT-4 model selection
 
 Commit Message:
-docs: create constitution v1.0.0 for Physical AI & Humanoid Robotics book
+docs: extend constitution to v1.1.0 with RAG chatbot principles (VII-IX)
+
+Adds three new principles for RAG chatbot feature ensuring AI accuracy,
+fast UX, and privacy compliance. Extends quality standards with measurable
+RAG-specific metrics (retrieval accuracy, hallucination rate, response time).
 -->
 
-# Physical AI & Humanoid Robotics Textbook Constitution
+# Physical AI & Humanoid Robotics - Project Constitution
 
 ## Core Principles
 
@@ -103,6 +122,50 @@ Theory MUST be accompanied by working code examples and exercises.
 
 **Rationale:** "Learning by doing" yields deepest understanding. Hands-on practice prepares students for real robotics work.
 
+### VII. Knowledge Grounding & Accuracy
+All AI-generated chatbot responses MUST be grounded in textbook content with verifiable sources.
+
+**Rules:**
+- RAG retrieval MUST use similarity threshold ≥ 0.7 (cosine similarity)
+- Every factual claim MUST cite source chapter/section with clickable URL
+- Off-topic queries MUST be refused with redirect: "This topic is not covered in the textbook. Try asking about ROS 2, Gazebo, NVIDIA Isaac, or VLA."
+- LLM temperature MUST be ≤ 0.3 for factual accuracy
+- Hallucination rate MUST be < 5% (measured on 50-question eval dataset)
+- Response MUST NOT include information not found in retrieved context
+- Source citations MUST include excerpt (50-150 chars) + heading + similarity score
+
+**Rationale:** Students trust the textbook as authoritative source. AI responses must maintain this trust by never inventing information or providing unsourced claims. Measurable accuracy ensures educational integrity.
+
+### VIII. Query Resolution & UX
+Chatbot MUST prioritize fast, helpful responses that enhance learning without disrupting study flow.
+
+**Rules:**
+- Response time MUST be < 3 seconds (p95) for typical queries
+- Streaming MUST deliver first token within 1 second (immediate feedback)
+- Source citations MUST be clickable and navigate to exact section with scroll-to-heading
+- Mobile users MUST access chatbot via full-screen modal on viewports < 768px
+- Text selection "Add to Chat" MUST have 10-character minimum (avoid accidental triggers)
+- Text selection MUST NOT activate inside code blocks (`<pre>`, `<code>` elements)
+- Error messages MUST be actionable (e.g., "Service unavailable, retry in 1 minute" NOT "Error 500")
+- Chatbot widget MUST NOT block book content (z-index properly managed)
+
+**Rationale:** Students use chatbot for quick clarification during study sessions. Delays, poor mobile UX, or unhelpful errors disrupt learning flow and reduce engagement. Fast, precise answers keep students in "flow state."
+
+### IX. Privacy & Data Minimization
+User data MUST be protected with minimal collection, secure storage, and user control.
+
+**Rules:**
+- Chat history MUST be user-deletable at any time via UI ("Delete All Chats" button)
+- Passwords MUST use bcrypt with ≥ 12 rounds (industry standard for slow hashing)
+- Sessions MUST expire after 30 days of inactivity (auto-delete stale sessions)
+- API keys MUST never be exposed to frontend (server-side only, no client bundles)
+- Anonymous chat MUST work without requiring authentication (graceful degradation)
+- User messages MUST NOT be logged to external analytics (Vercel function logs excluded)
+- GDPR compliance MUST include data deletion endpoint: `DELETE /api/user/data`
+- Database queries MUST NOT contain PII in error messages or stack traces
+
+**Rationale:** Educational tools handle sensitive student data (emails, study patterns, questions revealing knowledge gaps). Privacy-first design builds trust, complies with data protection regulations (GDPR, CCPA), and respects student autonomy over personal information.
+
 ## Quality Standards
 
 ### Content Quality
@@ -131,6 +194,18 @@ Theory MUST be accompanied by working code examples and exercises.
 - Code blocks MUST use consistent syntax highlighting theme
 - Spacing MUST follow 8px baseline grid
 - Typography MUST use system font stack for performance
+
+### RAG Chatbot Quality (Principles VII-IX)
+- Retrieval accuracy MUST be > 90% on 50-question eval dataset
+- Hallucination rate MUST be < 5% (manual review of 20+ responses)
+- All source URLs MUST be validated and reachable (no 404 errors)
+- Response time p95 MUST be < 3 seconds under 100 concurrent users
+- Citation accuracy MUST be > 98% (correct chapter/section references)
+- First token latency MUST be < 1 second (streaming enabled)
+- Mobile chatbot MUST be tested on 320px and 375px viewports
+- Anonymous chat MUST work without authentication (graceful degradation)
+- Password hashing MUST use bcrypt with ≥ 12 rounds
+- Session tokens MUST be httpOnly cookies with 30-day expiry
 
 ## Module Structure
 
@@ -212,4 +287,36 @@ To amend this constitution:
 - Complexity (violations) MUST be justified in PR description
 - Constitution review MUST occur at each iteration checkpoint
 
-**Version**: 1.0.0 | **Ratified**: 2025-11-29 | **Last Amended**: 2025-11-29
+**Version**: 1.1.0 | **Ratified**: 2025-11-29 | **Last Amended**: 2025-12-03
+
+---
+
+## Changelog
+
+### Version 1.1.0 (2025-12-03)
+**Type**: MINOR - New principles added for RAG chatbot feature
+
+**Added:**
+- Principle VII: Knowledge Grounding & Accuracy
+- Principle VIII: Query Resolution & UX
+- Principle IX: Privacy & Data Minimization
+- RAG Chatbot Quality section in Quality Standards
+
+**Rationale:**
+RAG-powered chatbot requires specific standards for AI-generated responses, user experience, and data privacy that were not covered in original textbook-focused principles (I-VI). These additions ensure chatbot maintains educational integrity while protecting student privacy.
+
+**Impact:**
+- Applies to features 004-rag-chat, 005-text-selection, 006-auth-sessions
+- Original book principles (I-VI) remain unchanged
+- Quality gates extended with RAG-specific metrics
+
+### Version 1.0.0 (2025-11-29)
+**Type**: MAJOR - Initial constitution
+
+**Added:**
+- Principle I: Educational Excellence
+- Principle II: Visual-Heavy Learning
+- Principle III: Progressive Complexity
+- Principle IV: Fast & Accessible
+- Principle V: Reference-First Design
+- Principle VI: Practical & Hands-On

@@ -1,0 +1,30 @@
+# RAG Chatbot Backend - Python Dependencies
+# Feature: 004-rag-chat
+
+# FastAPI and ASGI server
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+python-multipart==0.0.12
+
+# OpenAI Agents SDK and API
+openai-agents==0.1.0
+openai>=1.87.0
+
+# Vector database
+qdrant-client==1.12.0
+
+# Text processing and embeddings
+tiktoken==0.8.0
+
+# Scientific computing (for cosine similarity in reranking)
+scipy>=1.11.0
+
+# Data validation
+pydantic==2.10.0
+pydantic-settings==2.6.0
+
+# Environment variables
+python-dotenv==1.0.1
+
+# CORS support
+fastapi-cors==0.0.6

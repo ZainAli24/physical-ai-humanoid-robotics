@@ -74,7 +74,7 @@ const config: Config = {
           label: 'Book',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/ZainAli24/physical-ai-humanoid-robotics',
           label: 'GitHub',
           position: 'right',
         },

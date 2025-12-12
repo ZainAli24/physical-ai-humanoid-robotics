@@ -1,0 +1,48 @@
+# Render Deployment Configuration
+# Feature: 004-rag-chat
+# Platform: Render Free Tier
+
+services:
+  - type: web
+    name: rag-chatbot-backend
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      # Google Gemini Configuration (Chat Model)
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: CHATCOMPLETION_BASE_URL
+        value: https://generativelanguage.googleapis.com/v1beta/openai/
+      - key: CHAT_MODEL
+        value: gemini-2.5-flash
+      # OpenAI Configuration (Embeddings)
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: EMBEDDING_MODEL
+        value: text-embedding-3-small
+      # Qdrant Configuration
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: QDRANT_COLLECTION_NAME
+        value: robotics_textbook
+      # RAG Parameters
+      - key: CHUNK_SIZE
+        value: 512
+      - key: CHUNK_OVERLAP
+        value: 128
+      - key: RETRIEVAL_LIMIT
+        value: 5
+      - key: SIMILARITY_THRESHOLD
+        value: 0.7
+      # CORS Configuration
+      - key: CORS_ORIGINS
+        value: https://yourusername.github.io
+      # Admin API Key
+      - key: ADMIN_API_KEY
+        sync: false
