@@ -61,9 +61,12 @@ services:
         value: 5
       - key: SIMILARITY_THRESHOLD
         value: 0.7
-      # CORS Configuration
+      # CORS Configuration (Dynamic - links to frontend service)
       - key: CORS_ORIGINS
-        value: https://zainali24.github.io
+        fromService:
+          name: physical-ai-textbook
+          type: web
+          property: host
       # Neon Database (Authentication & Chat History)
       - key: NEON_DATABASE_URL
         sync: false
