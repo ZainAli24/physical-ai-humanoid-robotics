@@ -28,3 +28,12 @@ python-dotenv==1.0.1
 
 # CORS support
 fastapi-cors==0.0.6
+
+# Database (PostgreSQL with async support)
+sqlalchemy[asyncio]==2.0.23
+asyncpg==0.29.0
+alembic==1.13.0
+
+# Authentication and security
+bcrypt==4.1.2
+pyjwt==2.8.0
