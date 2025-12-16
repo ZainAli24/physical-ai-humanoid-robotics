@@ -9,7 +9,7 @@ Uses Google Gemini 2.5 Flash model via OpenAI Chat Completions API.
 """
 
 import os
-from agents import Agent, AsyncOpenAI, OpenAIChatCompletionsModel
+from agents import Agent, AsyncOpenAI, OpenAIChatCompletionsModel, ModelSettings
 from dotenv import load_dotenv
 
 # Import retrieve_context tool
@@ -136,6 +136,7 @@ def create_rag_agent() -> Agent:
             tools=[retrieve_context],
             model=llm_model,  # Pass OpenAIChatCompletionsModel for external providers
             input_guardrails=[off_topic_guardrail],
+            model_settings=ModelSettings(tool_choice="required"),  # Force tool usage
         )
 
     elif openai_api_key:
@@ -149,6 +150,7 @@ def create_rag_agent() -> Agent:
             tools=[retrieve_context],
             model=model_name,  # Just pass model name string for OpenAI
             input_guardrails=[off_topic_guardrail],
+            model_settings=ModelSettings(tool_choice="required"),  # Force tool usage
         )
 
     elif gemini_api_key:
@@ -172,6 +174,7 @@ def create_rag_agent() -> Agent:
             tools=[retrieve_context],
             model=llm_model,  # Pass OpenAIChatCompletionsModel for external providers
             input_guardrails=[off_topic_guardrail],
+            model_settings=ModelSettings(tool_choice="required"),  # Force tool usage
         )
 
     else:
