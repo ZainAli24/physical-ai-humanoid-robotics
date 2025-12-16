@@ -109,11 +109,36 @@ def create_rag_agent() -> Agent:
         >>> agent = create_rag_agent()
         >>> # Use with Runner.run(agent, "What is ROS 2?")
     """
-    # Check which API key is available (prefer OpenAI to avoid Gemini quota)
+    # Check which API key is available (prefer Gemini if CHAT_MODEL is gemini-*)
     openai_api_key = os.getenv("OPENAI_API_KEY")
     gemini_api_key = os.getenv("GEMINI_API_KEY")
+    chat_model = os.getenv("CHAT_MODEL", "gemini-2.5-flash")
 
-    if openai_api_key:
+    # Use Gemini if model name starts with "gemini-" or if only Gemini key exists
+    if gemini_api_key and (chat_model.startswith("gemini-") or not openai_api_key):
+        # Use Gemini - needs external client
+        model_name = chat_model
+        print(f"[OK] Using Gemini model: {model_name}")
+
+        external_client = AsyncOpenAI(
+            api_key=gemini_api_key,
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        )
+
+        llm_model = OpenAIChatCompletionsModel(
+            model=model_name,
+            openai_client=external_client
+        )
+
+        agent = Agent(
+            name="RAG Teaching Assistant",
+            instructions=AGENT_INSTRUCTIONS,
+            tools=[retrieve_context],
+            model=llm_model,  # Pass OpenAIChatCompletionsModel for external providers
+            input_guardrails=[off_topic_guardrail],
+        )
+
+    elif openai_api_key:
         # Use OpenAI directly - no external client needed
         model_name = os.getenv("CHAT_MODEL", "gpt-4o-mini")
         print(f"[OK] Using OpenAI model: {model_name}")
