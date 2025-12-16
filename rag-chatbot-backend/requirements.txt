@@ -22,6 +22,7 @@ scipy>=1.11.0
 # Data validation (Latest stable compatible version)
 pydantic==2.10.4
 pydantic-settings==2.6.1
+email-validator==2.2.0
 
 # Environment variables
 python-dotenv==1.0.1
