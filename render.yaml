@@ -9,7 +9,6 @@ services:
     name: physical-ai-textbook
     runtime: static
     plan: free
-    region: ohio
     buildCommand: npm install && npm run build
     staticPublishPath: ./build
     routes:
