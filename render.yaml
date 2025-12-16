@@ -59,12 +59,9 @@ services:
         value: 5
       - key: SIMILARITY_THRESHOLD
         value: 0.7
-      # CORS Configuration (Dynamic - links to frontend service)
+      # CORS Configuration (Set to frontend URL with protocol)
       - key: CORS_ORIGINS
-        fromService:
-          name: physical-ai-textbook
-          type: web
-          property: host
+        value: https://physical-ai-textbook-s3js.onrender.com
       # Neon Database (Authentication & Chat History)
       - key: DATABASE_URL
         sync: false
