@@ -65,7 +65,8 @@ TEST_RESULTS_*.md
 
 # Specs and planning (not needed for deployment)
 specs/
-history/
+/history/
+!rag-chatbot-backend/api/history/
 
 # Claude Code configuration (not needed for deployment)
 .claude/
