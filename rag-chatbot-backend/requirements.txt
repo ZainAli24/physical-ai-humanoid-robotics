@@ -19,9 +19,9 @@ tiktoken==0.8.0
 # Scientific computing (for cosine similarity in reranking)
 scipy>=1.11.0
 
-# Data validation (Compatible with openai-agents and mcp)
-pydantic==2.9.2
-pydantic-settings==2.5.2
+# Data validation (Latest stable compatible version)
+pydantic==2.10.4
+pydantic-settings==2.6.1
 
 # Environment variables
 python-dotenv==1.0.1
