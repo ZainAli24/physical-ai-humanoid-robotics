@@ -8,7 +8,6 @@ services:
   - type: web
     name: physical-ai-textbook
     runtime: static
-    plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: ./build
     routes:
