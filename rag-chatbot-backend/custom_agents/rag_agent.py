@@ -5,11 +5,11 @@ Feature: 004-rag-chat
 Defines the OpenAI Agent with instructions, tools, and configuration for
 answering questions about the Physical AI & Humanoid Robotics textbook.
 
-Uses Google Gemini 2.5 Flash model via OpenAI Chat Completions API.
+Uses OpenAI GPT-4o-mini model for reliable function calling and RAG retrieval.
 """
 
 import os
-from agents import Agent, AsyncOpenAI, OpenAIChatCompletionsModel, ModelSettings
+from agents import Agent, ModelSettings
 from dotenv import load_dotenv
 
 # Import retrieve_context tool
@@ -91,112 +91,54 @@ Source: [ROS 2 Architecture](docs/module-1-ros2/ros2-architecture)"
 
 def create_rag_agent() -> Agent:
     """
-    Create and configure the RAG Agent with OpenAI or Google Gemini model.
+    Create and configure the RAG Agent with OpenAI model.
 
     Returns:
         Configured OpenAI Agent with retrieve_context tool
 
-    Environment Variables (supports both):
-        Option 1 - OpenAI (Preferred):
-            - OPENAI_API_KEY: OpenAI API key
-            - CHAT_MODEL: Model name (default: gpt-4o-mini)
-
-        Option 2 - Gemini (Fallback):
-            - GEMINI_API_KEY: Google Gemini API key
-            - CHAT_MODEL: Model name (default: gemini-2.5-flash)
+    Environment Variables:
+        - OPENAI_API_KEY: OpenAI API key (required)
+        - CHAT_MODEL: Model name (default: gpt-4o-mini)
 
     Example:
         >>> agent = create_rag_agent()
         >>> # Use with Runner.run(agent, "What is ROS 2?")
     """
-    # Check which API key is available (prefer Gemini if CHAT_MODEL is gemini-*)
+    # Get OpenAI API key
     openai_api_key = os.getenv("OPENAI_API_KEY")
-    gemini_api_key = os.getenv("GEMINI_API_KEY")
-    chat_model = os.getenv("CHAT_MODEL", "gemini-2.5-flash")
+    if not openai_api_key:
+        raise ValueError("OPENAI_API_KEY environment variable is required")
 
-    # Use Gemini if model name starts with "gemini-" or if only Gemini key exists
-    if gemini_api_key and (chat_model.startswith("gemini-") or not openai_api_key):
-        # Use Gemini - needs external client
-        model_name = chat_model
-        print(f"[OK] Using Gemini model: {model_name}")
+    # Get model name
+    model_name = os.getenv("CHAT_MODEL", "gpt-4o-mini")
+    print(f"[OK] Creating RAG agent with OpenAI model: {model_name}")
 
-        external_client = AsyncOpenAI(
-            api_key=gemini_api_key,
-            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-        )
+    # Create agent with OpenAI model
+    agent = Agent(
+        name="RAG Teaching Assistant",
+        instructions=AGENT_INSTRUCTIONS,
+        model=model_name,
+        tools=[retrieve_context],
+        input_guardrails=[off_topic_guardrail],
+        model_settings=ModelSettings(tool_choice="required"),  # Force tool usage
+    )
 
-        llm_model = OpenAIChatCompletionsModel(
-            model=model_name,
-            openai_client=external_client
-        )
-
-        agent = Agent(
-            name="RAG Teaching Assistant",
-            instructions=AGENT_INSTRUCTIONS,
-            tools=[retrieve_context],
-            model=llm_model,  # Pass OpenAIChatCompletionsModel for external providers
-            input_guardrails=[off_topic_guardrail],
-            model_settings=ModelSettings(tool_choice="required"),  # Force tool usage
-        )
-
-    elif openai_api_key:
-        # Use OpenAI directly - no external client needed
-        model_name = os.getenv("CHAT_MODEL", "gpt-4o-mini")
-        print(f"[OK] Using OpenAI model: {model_name}")
-
-        agent = Agent(
-            name="RAG Teaching Assistant",
-            instructions=AGENT_INSTRUCTIONS,
-            tools=[retrieve_context],
-            model=model_name,  # Just pass model name string for OpenAI
-            input_guardrails=[off_topic_guardrail],
-            model_settings=ModelSettings(tool_choice="required"),  # Force tool usage
-        )
-
-    elif gemini_api_key:
-        # Use Gemini - needs external client
-        model_name = os.getenv("CHAT_MODEL", "gemini-2.5-flash")
-        print(f"[OK] Using Gemini model: {model_name}")
-
-        external_client = AsyncOpenAI(
-            api_key=gemini_api_key,
-            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-        )
-
-        llm_model = OpenAIChatCompletionsModel(
-            model=model_name,
-            openai_client=external_client
-        )
-
-        agent = Agent(
-            name="RAG Teaching Assistant",
-            instructions=AGENT_INSTRUCTIONS,
-            tools=[retrieve_context],
-            model=llm_model,  # Pass OpenAIChatCompletionsModel for external providers
-            input_guardrails=[off_topic_guardrail],
-            model_settings=ModelSettings(tool_choice="required"),  # Force tool usage
-        )
-
-    else:
-        raise ValueError("Neither OPENAI_API_KEY nor GEMINI_API_KEY environment variable is set")
-
+    print(f"[OK] Agent created successfully with {len(agent.tools)} tool(s)")
     return agent
 
 
-# Note: Agent is created on-demand in chat.py, not at module import time
-# to allow dynamic selection between OpenAI and Gemini based on available API keys
+# Note: Agent is created on-demand in chat.py
 
 
 if __name__ == "__main__":
     # Test agent instantiation
-    print("Testing RAG Agent instantiation with Gemini 2.5 Flash...")
+    print("Testing RAG Agent instantiation...")
 
     try:
         agent = create_rag_agent()
         print("✅ Agent created successfully")
         print(f"   Name: {agent.name}")
-        print(f"   Model: Google Gemini 2.5 Flash (via OpenAI Chat Completions API)")
-        print(f"   Temperature: {agent.temperature}")
+        print(f"   Model: OpenAI GPT-4o-mini")
         print(f"   Tools: {len(agent.tools)} tool(s)")
         print(f"   Instructions length: {len(agent.instructions)} chars")
     except Exception as e:
