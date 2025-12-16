@@ -66,7 +66,7 @@ services:
           type: web
           property: host
       # Neon Database (Authentication & Chat History)
-      - key: NEON_DATABASE_URL
+      - key: DATABASE_URL
         sync: false
       - key: JWT_SECRET_KEY
         sync: false
