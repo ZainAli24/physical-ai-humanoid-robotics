@@ -37,7 +37,7 @@ services:
       - key: CHATCOMPLETION_BASE_URL
         value: https://generativelanguage.googleapis.com/v1beta/openai/
       - key: CHAT_MODEL
-        value: gemini-2.5-flash
+        value: gemini-1.5-flash
       # OpenAI Configuration (Embeddings)
       - key: OPENAI_API_KEY
         sync: false
