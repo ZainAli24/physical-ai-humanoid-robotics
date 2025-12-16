@@ -62,9 +62,9 @@ interface ChatState {
  * Note: Docusaurus doesn't support process.env in browser context
  */
 const API_BASE_URL =
-  typeof process !== 'undefined' && process.env?.NODE_ENV === 'production'
-    ? (typeof process !== 'undefined' && process.env?.REACT_APP_BACKEND_URL) || 'https://your-render-backend.onrender.com'
-    : 'http://localhost:8000'; // FastAPI backend port
+  typeof window !== 'undefined' && window.location.hostname === 'localhost'
+    ? 'http://localhost:8000' // Local development
+    : 'https://rag-chatbot-backend-wb8a.onrender.com'; // Production backend
 
 /**
  * Generate UUID (simple version for client-side)

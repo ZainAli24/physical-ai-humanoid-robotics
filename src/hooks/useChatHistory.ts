@@ -10,9 +10,10 @@ import { useAuth } from './useAuth';
 
 // API base URL from environment
 // Note: Docusaurus doesn't support process.env in browser context
-const API_URL = typeof process !== 'undefined' && process.env?.REACT_APP_API_URL
-  ? process.env.REACT_APP_API_URL
-  : 'http://localhost:8000/api';
+const API_URL =
+  typeof window !== 'undefined' && window.location.hostname === 'localhost'
+    ? 'http://localhost:8000/api' // Local development
+    : 'https://rag-chatbot-backend-wb8a.onrender.com/api'; // Production backend
 
 // Types
 export interface ChatSession {
