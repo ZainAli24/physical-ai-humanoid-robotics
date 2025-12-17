@@ -8,8 +8,6 @@ services:
   - type: web
     name: physical-ai-textbook
     runtime: static
-    plan: free
-    region: ohio
     buildCommand: npm install && npm run build
     staticPublishPath: ./build
     routes:
@@ -32,15 +30,10 @@ services:
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.0
-      # Google Gemini Configuration (Chat Model)
-      - key: GEMINI_API_KEY
-        sync: false
-      - key: CHATCOMPLETION_BASE_URL
-        value: https://generativelanguage.googleapis.com/v1beta/openai/
+        value: 3.12.0
+      # OpenAI Configuration (Chat Model + Embeddings)
       - key: CHAT_MODEL
-        value: gemini-2.5-flash
-      # OpenAI Configuration (Embeddings)
+        value: gpt-4o-mini
       - key: OPENAI_API_KEY
         sync: false
       - key: EMBEDDING_MODEL
@@ -60,12 +53,12 @@ services:
       - key: RETRIEVAL_LIMIT
         value: 5
       - key: SIMILARITY_THRESHOLD
-        value: 0.7
-      # CORS Configuration
+        value: 0.3
+      # CORS Configuration (Set to frontend URL with protocol)
       - key: CORS_ORIGINS
-        value: https://zainali24.github.io
+        value: https://physical-ai-textbook-s3js.onrender.com
       # Neon Database (Authentication & Chat History)
-      - key: NEON_DATABASE_URL
+      - key: DATABASE_URL
         sync: false
       - key: JWT_SECRET_KEY
         sync: false

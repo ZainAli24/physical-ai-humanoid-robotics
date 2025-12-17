@@ -31,14 +31,9 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.0
-      # Google Gemini Configuration (Chat Model)
-      - key: GEMINI_API_KEY
-        sync: false
-      - key: CHATCOMPLETION_BASE_URL
-        value: https://generativelanguage.googleapis.com/v1beta/openai/
+      # OpenAI Configuration (Chat Model + Embeddings)
       - key: CHAT_MODEL
         value: gpt-4o-mini
-      # OpenAI Configuration (Embeddings)
       - key: OPENAI_API_KEY
         sync: false
       - key: EMBEDDING_MODEL
